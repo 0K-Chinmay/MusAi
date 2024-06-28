@@ -16,7 +16,7 @@ export default function Home() {
   const {user,isLoaded} = useUser();
    const fetchMyAPI=async()=>{
     const secret=`${user?.id}${user?.primaryEmailAddressId }`
-    const response=await fetch('https://mus-ai-git-main-0kchinmays-projects.vercel.app//api/playlist', {
+    const response=await fetch('https://mus-ai-git-main-0kchinmays-projects.vercel.app/api/playlist', {
     method:'POST',
      headers:{
     'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ setinfo(await response.json())
 
   const del=async(n)=>{
     let k=n.prompt
-    const response=await fetch('https://mus-ai-git-main-0kchinmays-projects.vercel.app//api/del', {
+    const response=await fetch('https://mus-ai-git-main-0kchinmays-projects.vercel.app/api/del', {
     method:'POST',
      headers:{
     'Content-Type': 'application/json'
