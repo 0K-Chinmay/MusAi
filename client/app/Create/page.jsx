@@ -21,6 +21,17 @@ export default function Home() {
     const [songs, setsongs] = useState([''])  
     const [limit, setlimit] = useState(user?.unsafeMetadata?.limit ?? 0)  
 
+useEffect(() => {
+
+     user?.update({
+        unsafeMetadata: {
+          limit:limit | 0
+        }
+      })
+}, [limit])
+
+
+
     const groq = new Groq({
         apiKey: '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',
         dangerouslyAllowBrowser: true 
@@ -104,12 +115,6 @@ export default function Home() {
   }, 5000);
     }
   })
-  await user.update({
-    unsafeMetadata: {
-      limit:limit ||0
-    }
-  })
-  
     }
   return (
     <div className='h-screen w-screen flex items-center justify-center'>
