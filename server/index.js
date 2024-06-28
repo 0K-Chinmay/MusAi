@@ -8,7 +8,9 @@ const cors = require('cors');
  app.use(bodyParser.json({limit: "30mb", extended:true}));
  app.use(bodyParser.urlencoded({limit: "30mb", extended:true}))
  app.use(cors({
-    origin: [""]
+    origin: ["https://muso-ai.vercel.app"],
+    method:["POST","GET"],
+  credentials:true
  }));
  
   const CONNECTION_URL=`mongodb+srv://sekiro:sekiro@sekiro.lu0pyfl.mongodb.net`
