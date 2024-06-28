@@ -8,25 +8,28 @@ import Player from "@madzadev/audio-player";
 import "@madzadev/audio-player/dist/index.css";
 import ReactLoading from "react-loading";
 import {useUser, SignedIn} from '@clerk/nextjs'
+import Popup from'../../components/popup'
+import { setTimeout } from 'timers';
 var art=[{}];
 let urls;
 export default function Home() {
     const {user} = useUser();
     const [loadin, setloadin] = useState(false)
     const [search, setsearch] = useState(false)
+    const [saved, setsaved] = useState(false)
     const [prompt, setprompt] = useState('')
     const [songs, setsongs] = useState([''])  
-    const [limit, setlimit] = useState(user?.unsafeMetadata?.limit+1 ?? 0)  
+    const [limit, setlimit] = useState(user?.unsafeMetadata?.limit ?? 0)  
 
     const groq = new Groq({
         apiKey: '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',
         dangerouslyAllowBrowser: true 
     });
     async function main() {
-        setlimit(user?.unsafeMetadata?.limit+1 ?? 0)
+        setlimit(user?.unsafeMetadata?.limit ?? 0)
         urls = new Array();
         setsearch(false);
-
+      
         if(prompt=='')
         {
             console.log('chutiya kuch likhke search maar')
@@ -77,14 +80,8 @@ export default function Home() {
         });
     }
     async function save(){ 
-      setlimit(limit+1)
-      await user.update({
-        unsafeMetadata: {
-          limit:limit ||0
-        }
-      })
       const secret=`${user.id + user.primaryEmailAddressId }`
-      const response=await fetch('https://mus-ai-git-main-0kchinmays-projects.vercel.app/api/register', {
+      const response=await fetch('http://localhost:5000/api/register', {
       method:'POST',
        headers:{
       'Content-Type': 'application/json'
@@ -95,10 +92,28 @@ export default function Home() {
       prompt:prompt,
       songInfo:urls,
     }),
+  }).then((response)=>(response.json())).then((data)=>{
+   
+    if(data.status=='ok'){
+    console.log(data.status)
+    setlimit(limit+1)
+    setsaved(!saved)
+    setTimeout(() => {
+    console.log(saved)
+    setsaved(false);
+  }, 5000);
+    }
   })
+  await user.update({
+    unsafeMetadata: {
+      limit:limit ||0
+    }
+  })
+  
     }
   return (
     <div className='h-screen w-screen flex items-center justify-center'>
+    {saved?<Popup className='z-30'/>:<></>}
         <time dateTime="2016-10-25" suppressHydrationWarning />
         <Nav/>
         {loadin?<ReactLoading className='absolute z-20 top-[23rem] ' type="cylon" color="#287EEC"
@@ -124,7 +139,6 @@ export default function Home() {
                 save()
                 }
                 else{
-                    save()
                  alert('save limit')
                 }
              }}>Save Playlist</ button>
