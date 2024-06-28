@@ -60,7 +60,7 @@ const gone=await response.json()
     
     <div className='absolute h-full w-[100%] z-0 bottom-0 flex
      flex-wrap justify-center items-center' >
-      <RxCross2 className={pl?' fixed z-30 cursor-pointer top-[8rem] right-8':'hidden'} size={40} onClick={()=>{setpl(false)}} />
+      <RxCross2 className={pl?' fixed z-30 cursor-pointer top-[6rem] right-2':'hidden'} size={40} onClick={()=>{setpl(false)}} />
       <div className=' h-[80%] w-[88%]  flex items-center justify-center gap-[5rem] flex-wrap'>
       {info.map((n,i)=>
       <div className='m-0 cursor-pointer'onClick={()=>{setpl(true);setlinks(i)}}>
@@ -73,7 +73,7 @@ const gone=await response.json()
       )}
       </div>
       {pl?
-      <div className='fixed bg-black h-screen w-screen flex items-center justify-center bg-opacity-[0.6] z-20'>
+      <div className='fixed bg-black h-screen w-screen flex items-center justify-center bg-opacity-[0.6] z-20 top-[3rem]'>
       <Player  includeTags={false} includeSearch={false} trackList={info[links]?.songInfo}/>
       </div>
       :<></>}
