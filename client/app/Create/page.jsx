@@ -92,7 +92,7 @@ useEffect(() => {
     }
     async function save(){ 
       const secret=`${user.id + user.primaryEmailAddressId }`
-      const response=await fetch('http://localhost:5000/api/register', {
+      const response=await fetch('https://mus-ai-git-main-0kchinmays-projects.vercel.app/api/register', {
       method:'POST',
        headers:{
       'Content-Type': 'application/json'
