@@ -12,7 +12,7 @@ export default function Home() {
   const [links, setlinks] = useState(0)
   const [info, setinfo] = useState([])
    const fetchMyAPI=async()=>{
-    const response=await fetch('https://mus-ai-git-main-0kchinmays-projects.vercel.app//api/explore', {
+    const response=await fetch('https://mus-ai-git-main-0kchinmays-projects.vercel.app/api/explore', {
     method:'POST',
      headers:{
     'Content-Type': 'application/json'
