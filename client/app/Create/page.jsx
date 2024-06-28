@@ -84,7 +84,7 @@ export default function Home() {
         }
       })
       const secret=`${user.id + user.primaryEmailAddressId }`
-      const response=await fetch('https://mus-ai-git-main-0kchinmays-projects.vercel.app//api/register', {
+      const response=await fetch('https://mus-ai-git-main-0kchinmays-projects.vercel.app/api/register', {
       method:'POST',
        headers:{
       'Content-Type': 'application/json'
