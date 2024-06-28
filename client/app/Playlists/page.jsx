@@ -73,7 +73,7 @@ const gone=await response.json()
       )}
       </div>
       {pl?
-      <div className='absolute bg-black h-screen w-screen flex items-center justify-center bg-opacity-[0.6]'>
+      <div className='absolute bg-black h-screen w-screen flex items-center justify-center bg-opacity-[0.6] z-30'>
       <Player  includeTags={false} includeSearch={false} trackList={info[links]?.songInfo}/>
       </div>
       :<></>}
