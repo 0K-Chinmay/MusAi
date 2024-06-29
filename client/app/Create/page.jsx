@@ -125,8 +125,8 @@ useEffect(() => {
     }
   return (
     <div className='h-screen w-screen flex items-center justify-center'>
-    {repeat?<Popup clr='red' name='Playlist exists' className='z-30'/>:<></>}
-    {saved?<Popup clr='green' name='Saved' className='z-30'/>:<></>}
+    {repeat?<Popup name='Playlist exists' className='z-30'/>:<></>}
+    {saved?<Popup  name='Saved' className='z-30'/>:<></>}
         <time dateTime="2016-10-25" suppressHydrationWarning />
         <Nav/>
         {loadin?<ReactLoading className='absolute z-20 top-[23rem] ' type="cylon" color="#287EEC"
