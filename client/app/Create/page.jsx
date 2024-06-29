@@ -113,13 +113,13 @@ useEffect(() => {
     setTimeout(() => {
     
     setsaved(false);
-  }, 5000);
+  }, 3000);
     }
     else {
          setrepeat(true)
          setTimeout(() => {
             setrepeat(false);
-          }, 5000);
+          }, 3000);
     }
   })
     }
