@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import { setTimeout } from 'timers';
-function popup({clr,name}) {
+function popup({name}) {
     const [visi, setvisi] = useState(true)
 
     useEffect(() => {
@@ -16,7 +16,7 @@ function popup({clr,name}) {
   return (
     <div className={`fixed inset-x-0 bottom-0 flex items-end justify-right px-4 py-6 justify-end z-50 transition-opacity ease-in ${visi? 'opacity-100' : 'opacity-0' }`}>
     <div
-        className={`max-w-sm w-full shadow-lg rounded px-4 py-3 relative bg-'${clr}'-400 border-l-4 border-'${clr}'-700 text-white`}>
+        className={`max-w-sm w-full shadow-lg rounded px-4 py-3 relative bg-blue-400 border-l-4 border-blue-700 text-white`}>
         <div className="p-2">
             <div className="flex items-start">
                 <div className="ml-3 w-0 flex-1 pt-0.5">
