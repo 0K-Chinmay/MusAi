@@ -57,6 +57,7 @@ const gone=await response.json()
   }
   return (
     <div>
+      <SignedIn>
     <Nav/>
     
     <div className='absolute h-full w-[100%] z-0 bottom-0 flex
@@ -84,6 +85,7 @@ const gone=await response.json()
       </div>
       :<></>}
     </div>
+        </SignedIn>
     </div>
   );
 }
