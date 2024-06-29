@@ -111,14 +111,13 @@ useEffect(() => {
     setlimit(limit+1)
     setsaved(!saved)
     setTimeout(() => {
-    console.log(saved)
+    
     setsaved(false);
   }, 5000);
     }
     else {
          setrepeat(true)
          setTimeout(() => {
-            console.log(saved)
             setrepeat(false);
           }, 5000);
     }
