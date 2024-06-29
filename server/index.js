@@ -8,8 +8,8 @@ const cors = require('cors');
  app.use(bodyParser.json({limit: "30mb", extended:true}));
  app.use(bodyParser.urlencoded({limit: "30mb", extended:true}))
  app.use(cors({
-    origin: '*',
-    method:["POST","GET"],
+    origin:'*',
+  method:["POST","GET"],
   credentials:true
  }));
  
@@ -27,16 +27,28 @@ app.get('/',(req,res)=>{
 
 app.post('/api/register',async (req,res)=>{
     try {
-    await User.create({
-               secret:req.body.secret,
-               playlist:req.body.playlist,
-               prompt:req.body.prompt,
-               songInfo:req.body.songInfo
-        })
-        res.json({status:'ok'})
+     await User.find({
+        prompt:req.body.prompt,
+        secret:req.body.secret
+     }).then(async function(data){
+        if(data[0]?.secret==req.body.secret){
+            res.json({status:'error'})
+        }
+        else{
+            await User.create({
+                secret:req.body.secret,
+                playlist:req.body.playlist,
+                prompt:req.body.prompt,
+                songInfo:req.body.songInfo
+         })
+            res.json({status:'ok'})
+        }
+     })   
+   
+        
     } catch (error) {
         console.log("dumbfk66"+error)
-       res.json({status:'error'})
+       
     } 
 })
 
