@@ -14,6 +14,7 @@ var art=[{}];
 let urls;
 export default function Home() {
     const {user} = useUser();
+    const [repeat, setrepeat] = useState(false)
     const [loadin, setloadin] = useState(false)
     const [search, setsearch] = useState(false)
     const [saved, setsaved] = useState(false)
@@ -114,11 +115,19 @@ useEffect(() => {
     setsaved(false);
   }, 5000);
     }
+    else {
+         setrepeat(true)
+         setTimeout(() => {
+            console.log(saved)
+            setrepeat(false);
+          }, 5000);
+    }
   })
     }
   return (
     <div className='h-screen w-screen flex items-center justify-center'>
-    {saved?<Popup className='z-30'/>:<></>}
+    {repeat?<Popup clr='red' name='Playlist exists' className='z-30'/>:<></>}
+    {saved?<Popup clr='green' name='Saved' className='z-30'/>:<></>}
         <time dateTime="2016-10-25" suppressHydrationWarning />
         <Nav/>
         {loadin?<ReactLoading className='absolute z-20 top-[23rem] ' type="cylon" color="#287EEC"
