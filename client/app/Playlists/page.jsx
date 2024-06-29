@@ -6,8 +6,9 @@ import { useEffect, useState } from 'react';
 import Player from "@madzadev/audio-player";
 import "@madzadev/audio-player/dist/index.css";
 import { RxCross2 } from "react-icons/rx";
+import Link from 'next/link'
 import {useUser, SignedIn} from '@clerk/nextjs'
-
+import { FaPlus } from "react-icons/fa6";
 export default function Home() {
   const [op, setop] = useState(false)
   const [pl, setpl] = useState(false)
@@ -71,6 +72,11 @@ const gone=await response.json()
       <Card key={i} iname={n}/>
       </div>
       )}
+         <div className=' flex h-[20rem] w-[22rem] max-w-[22rem]  items-center justify-center'>
+        <Link href='/Create'>
+        <FaPlus size={60} className=' cursor-pointer'/>
+        </Link>
+        </div>
       </div>
       {pl?
       <div className='fixed bg-black h-screen w-screen flex items-center justify-center bg-opacity-[0.6] z-20 top-[3rem]'>
